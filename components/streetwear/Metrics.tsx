@@ -73,7 +73,9 @@ export default function Metrics() {
           {metrics.map((metric, index) => (
             <div
               key={index}
-              ref={(el) => (rowsRef.current[index] = el)}
+              ref={(el) => {
+                rowsRef.current[index] = el;
+              }}
               className={`flex items-center justify-between py-8 border-b border-gray-300 ${
                 metric.highlight ? "bg-[#FF3C00] text-white -mx-6 px-6" : ""
               }`}
