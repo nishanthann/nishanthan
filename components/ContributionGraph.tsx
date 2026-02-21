@@ -69,7 +69,7 @@ const isDateInValidRange = (
   currentDate: Date,
   startDate: Date,
   endDate: Date,
-  targetYear: number
+  targetYear: number,
 ) => {
   const isInRange = currentDate >= startDate && currentDate <= endDate;
   const isPreviousYearDecember =
@@ -84,7 +84,7 @@ const isDateInValidRange = (
 // Helper function to create day data
 const createDayData = (
   currentDate: Date,
-  contributionData: ContributionData[]
+  contributionData: ContributionData[],
 ): ContributionData => {
   const dateString = currentDate.toISOString().split("T")[0];
   const existingData = contributionData.find((d) => d.date === dateString);
@@ -208,7 +208,7 @@ export function ContributionGraph({
       for (let day = 0; day < DAYS_IN_WEEK; day++) {
         const currentDate = new Date(firstSunday);
         currentDate.setDate(
-          firstSunday.getDate() + weekNum * DAYS_IN_WEEK + day
+          firstSunday.getDate() + weekNum * DAYS_IN_WEEK + day,
         );
 
         if (isDateInValidRange(currentDate, startDate, endDate, year)) {
@@ -265,10 +265,9 @@ export function ContributionGraph({
   };
 
   return (
-    <div className={`contribution-graph ${className} mt-17 mb-27 `}>
+    <div className={`contribution-graph ${className} mt-27 mb-27 `}>
       <TitleSection
         title="The Commit Chronicles"
-        badgeText="Live Stats"
         badgeIcon={
           <FireExtinguisherIcon className="text-primary h-3.5 w-3.5" />
         }
@@ -331,7 +330,7 @@ export function ContributionGraph({
                       title={
                         showTooltips
                           ? `${formatDate(dayData.date)}: ${getContributionText(
-                              dayData.count
+                              dayData.count,
                             )}`
                           : undefined
                       }
