@@ -85,17 +85,6 @@ export function BadgeFormation() {
         // Start: -100 (Left) -> Center: 0 -> End: 100 (Right)? No, that's continuous drift.
         // Let's do: Start (Left) -> Center (0) -> End (Left)
         // This means it comes in, settles, then goes back out the way it came.
-
-        gsap.to(row, {
-          xPercent: direction, // Go back to where it came from
-          opacity: 0,
-          scrollTrigger: {
-            trigger: row,
-            start: "center top+=100", // Start exiting as it goes up
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
       });
     }, containerRef);
 
@@ -110,7 +99,7 @@ export function BadgeFormation() {
       />
       <div
         ref={containerRef}
-        className="relative mx-auto flex mt-16 w-full max-w-3xl flex-col items-center gap-4 px-10 py-6"
+        className="relative mx-auto flex mt-30 w-full max-w-3xl flex-col items-center gap-4 px-10 "
       >
         {/* Row 1 */}
         <div className="tool-row flex flex-wrap justify-center gap-3">

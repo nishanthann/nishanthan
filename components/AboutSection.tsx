@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TitleSection } from "./ui/TitleSection";
 import { useEffect, useRef } from "react";
-import BigBackgroundText from "./Bigtext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,12 +44,10 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <div ref={containerRef} className="overflow-hidden">
+    <div ref={containerRef} className="overflow-hidden -mt-10">
       <div ref={contentRef}>
-        <TitleSection title="About Me" />
-        <div className="relative">
-          <BigBackgroundText />
-        </div>
+        <TitleSection title="About Me" animate={false} />
+
         <div className="flex items-center text-xs justify-center -mt-8">
           {/* Live indicator */}
           <span className="relative flex w-2 h-2">

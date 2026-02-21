@@ -10,7 +10,6 @@ import { BadgeFormation } from "@/components/Tools";
 import CTA2 from "@/components/GetInTouch";
 import AboutSection from "@/components/AboutSection";
 import { TitleSection } from "@/components/ui/TitleSection";
-import BigBackgroundText from "@/components/Bigtext";
 
 export default function GradientHero() {
   return (
@@ -19,7 +18,7 @@ export default function GradientHero() {
 
       <AboutSection />
       <FeaturesSection />
-      <div className="pt-12 pb-4 px-8 md:px-16 z-20 relative">
+      <div className="pt-12  px-8 md:px-16 z-20 relative">
         <TitleSection
           title="Crafted With Passion"
           description="Explore my latest creations and experiments."
@@ -27,6 +26,7 @@ export default function GradientHero() {
       </div>
       <Projects />
       <BadgeFormation />
+
       <ContributionGraph data={generatedContributionData} year={2025} />
       <MarqueeDemo />
 

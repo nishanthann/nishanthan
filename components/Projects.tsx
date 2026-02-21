@@ -121,7 +121,7 @@ export const Projects = () => {
       {/* Horizontal Scroll Track */}
       <div
         ref={trackRef}
-        className="flex items-center h-full gap-8 pl-8 md:pl-16 md:mt-10"
+        className="flex items-center h-full gap-8 pl-8 md:pl-16 md:mt-5"
         style={{ willChange: "transform" }}
       >
         {projects.map((project) => (
@@ -129,10 +129,7 @@ export const Projects = () => {
         ))}
 
         {/* "View All" Final Slide */}
-        <div className="shrink-0 w-[50vw] md:w-[30vw] h-[75vh] rounded-3xl flex flex-col items-center justify-center bg-primary/5 border border-primary/20">
-          <p className="text-lg text-muted-foreground mb-6">
-            Want to see more?
-          </p>
+        <div className="shrink-0 w-[50vw] md:w-[30vw] h-[75vh] rounded-3xl mx-auto flex flex-col items-center justify-center ">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-white transition-all duration-300 group bg-primary/10 hover:bg-primary px-8 py-3 rounded-full border border-primary/20 hover:border-transparent"
