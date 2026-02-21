@@ -48,43 +48,35 @@ export function BadgeFormation() {
 
       const rows = containerRef.current.querySelectorAll(".tool-row");
 
+      // Set initial state for all rows
       rows.forEach((row, i) => {
         const isOdd = i % 2 !== 0;
-        const direction = isOdd ? 100 : -100; // Right for odd, Left for even
+        const direction = isOdd ? 100 : -100;
+        gsap.set(row, { xPercent: direction, opacity: 0 });
+      });
+
+      // All rows slide IN at the same time (no stagger)
+      rows.forEach((row, i) => {
+        const isOdd = i % 2 !== 0;
+        const direction = isOdd ? 100 : -100;
 
         gsap.fromTo(
           row,
-          {
-            xPercent: direction,
-            opacity: 0,
-          },
+          { xPercent: direction, opacity: 0 },
           {
             xPercent: 0,
             opacity: 1,
-            scrollTrigger: {
-              trigger: row,
-              start: "top bottom-=100", // Start slightly before it enters view
-              end: "center center",
-              scrub: 1,
-              toggleActions: "play reverse play reverse",
-            },
             ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top bottom-=100",
+              end: "top 30%",
+              scrub: 1,
+            },
           },
         );
 
-        // Optional: Slide out when scrolling past?
-        // Let's keep it simple: Slide IN to center. If they scroll UP, it slides OUT.
-        // If they scroll PAST, it stays centered or gently fades?
-        // User asked: "like the same when we scroll out too"
-        // This usually implies entering viewport = animate in. Leaving viewport = animate out.
-        // The scrub above handles entry.
-
-        // To handle exit (top of screen), we might need a timeline or a second trigger.
-        // But purely scrubbing relative to viewport center is often cleanest.
-        // Let's try a "through" animation:
-        // Start: -100 (Left) -> Center: 0 -> End: 100 (Right)? No, that's continuous drift.
-        // Let's do: Start (Left) -> Center (0) -> End (Left)
-        // This means it comes in, settles, then goes back out the way it came.
+        // All rows slide OUT at the same time
       });
     }, containerRef);
 
@@ -92,14 +84,14 @@ export function BadgeFormation() {
   }, []);
 
   return (
-    <>
+    <div>
       <TitleSection
         title="Tools of the Trade"
         description="The tools, libraries, and frameworks that help me craft seamless digital experiences."
       />
       <div
         ref={containerRef}
-        className="relative mx-auto flex mt-30 w-full max-w-3xl flex-col items-center gap-4 px-10 "
+        className="relative mx-auto flex sm:mt-10 w-full max-w-3xl flex-col items-center gap-4 px-10 "
       >
         {/* Row 1 */}
         <div className="tool-row flex flex-wrap justify-center gap-3">
@@ -402,6 +394,6 @@ export function BadgeFormation() {
           </Badge>
         </div>
       </div>
-    </>
+    </div>
   );
 }

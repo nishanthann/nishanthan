@@ -35,7 +35,7 @@ export default function AboutSection() {
         },
         xPercent: 40,
         yPercent: 20,
-        opacity: 0,
+        opacity: 50,
         ease: "none",
       });
     }, containerRef);
@@ -44,7 +44,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <div ref={containerRef} className="overflow-hidden -mt-10">
+    <div ref={containerRef} className="overflow-hidden -mt-10 sm:-mt-5">
       <div ref={contentRef}>
         <TitleSection title="About Me" animate={false} />
 
